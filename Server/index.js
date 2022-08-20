@@ -6,6 +6,7 @@ const app = express()
 async function start () {
   const nuxt = await loadNuxt(isDev ? 'dev' : 'start')
   await nuxt.listen(process.env.PORT, process.env.HOST)
+  console.log("express started")
 }
 
 start()
