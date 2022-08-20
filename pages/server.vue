@@ -16,7 +16,7 @@ export default Vue.extend({
   methods: {
     async showMessageFromBackend() {
       try {
-        const response = await this.$axios.get('/api')
+        const response = await this.$axios.get('/api/hello')
         console.log(response.data)
       } catch (err) {
         console.log(err)
