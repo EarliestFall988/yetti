@@ -1,14 +1,17 @@
 
 // const express = require('express')
 // const app = express()
-// const mongoose = require('mongoose');
-// require('dotenv/config');
+const mongoose = require('mongoose');
+require('dotenv/config');
+import Blog from './model/blog'
 
 
 
-// // mongoose.connect(process.env.DBCONNECTION, { useNewUrlParser: true }, () => {
-// //     console.log("connected to db!")
-// // })
+mongoose.connect(process.env.DBCONNECTION, { useNewUrlParser: true }, () => {
+    console.log("connected to db!")
+})
+
+
 
 // app.use(express.json())
 // app.use(express.urlencoded({ extended: false }))
@@ -25,5 +28,14 @@
 
 export default function handler(request, response) {
   const { name } = request.query;
+
+  const testArticle = new Blog({
+  title: request.query,
+  slug: 'test',
+  published: true
+});
+
+testArticle.save();
+
   response.end(`Hello ${name}!`);
 }
